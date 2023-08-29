@@ -45,8 +45,8 @@ Thanks to Martin Matuška for creating [mfsBSD](https://mfsbsd.vx.sk/) and his t
 mkdir -p /workdir/DIST  
 cd /workdir
 fetch -4 -q -o "mfsbsd-master.tar.gz" --no-verify-peer "https://github.com/mmatuska/mfsbsd/archive/master.tar.gz"
-fetch -o DIST ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/13.3-RELEASE/kernel.txz
-fetch -o DIST ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/13.3-RELEASE/base.txz
+fetch -o DIST ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/13.2-RELEASE/kernel.txz
+fetch -o DIST ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/13.2-RELEASE/base.txz
 tar xf mfsbsd-master.tar.gz
 chown -R root:wheel mfsbsd-master
 cd mfsbsd-master
