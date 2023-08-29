@@ -58,3 +58,34 @@ cd freebsd-foreman
 ./build.sh -r 13.2
 scp /tmp/image/FreeBSD-x86_64-13.2-mfs.img X.X.X.X:/var/lib/tftpboot/boot/.
 ```
+
+Error: OS Version
+To fix, this you need to re-bootstrap pkg as follows:
+```
+root@Inst1:/usr/home/neel # pkg-static bootstrap -f
+pkg(8) is already installed. Forcing reinstallation through pkg(7).
+The package management tool is not yet installed on your system.
+Do you want to fetch and install it now? [y/N]: y
+Bootstrapping pkg from pkg+http://pkg.FreeBSD.org/FreeBSD:12:amd64/quarterly, please wait...
+Verifying signature with trusted certificate pkg.freebsd.org.2013102301... done
+Installing pkg-1.13.2...
+package pkg is already installed, forced install
+Extracting pkg-1.13.2: 100%
+root@Inst1:/usr/home/neel #
+```
+And then update as normal:
+```
+root@Inst1:/usr/home/neel # pkg update -f
+Updating FreeBSD repository catalogue...
+Fetching meta.conf: 100%    163 B   0.2kB/s    00:01    
+Fetching packagesite.txz: 100%    6 MiB   3.3MB/s    00:02    
+Processing entries: 100%
+FreeBSD repository update completed. 31517 packages processed.
+All repositories are up to date.
+root@Inst1:/usr/home/neel # pkg upgrade
+Updaing FreeBSD repository catalogue...
+FreeBSD repository is up to date.
+All repositories are up to date.
+```
+
+
