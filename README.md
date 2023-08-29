@@ -41,18 +41,20 @@ Use `build.sh` to create your own images or to include a modified version of `rc
 Thanks to Martin Matuška for creating [mfsBSD](https://mfsbsd.vx.sk/) and his talk on [Deploying FreeBSD systems with Foreman](https://blog.vx.sk/archives/60).
 
 ## Extra: Previous steps
- mkdir -p /workdir/DIST  
- cd /workdir
- fetch -4 -q -o "mfsbsd-master.tar.gz" --no-verify-peer "https://github.com/mmatuska/mfsbsd/archive/master.tar.gz"
- fetch -o DIST ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/13.3-RELEASE/kernel.txz
- fetch -o DIST ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/13.3-RELEASE/base.txz
- tar xf mfsbsd-master.tar.gz
- chown -R root:wheel mfsbsd-master
- cd mfsbsd-master
- make BASE=/workdir/DIST RELEASE=13.2-RELEASE ARCH=amd64 PKG_STATIC=/usr/local/sbin/pkg-static MFSROOT_MAXSIZE=120m
- #move the image to /tmp/image
- git clone https://github.com/fraenki/freebsd-foreman.git
- cd freebsd-foreman
- #Modify the build.sh script not to exit if image not fetched
- ./build.sh -r 13.2
- scp /tmp/image/FreeBSD-x86_64-13.2-mfs.img X.X.X.X:/var/lib/tftpboot/boot/.
+```
+mkdir -p /workdir/DIST  
+cd /workdir
+fetch -4 -q -o "mfsbsd-master.tar.gz" --no-verify-peer "https://github.com/mmatuska/mfsbsd/archive/master.tar.gz"
+fetch -o DIST ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/13.3-RELEASE/kernel.txz
+fetch -o DIST ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/13.3-RELEASE/base.txz
+tar xf mfsbsd-master.tar.gz
+chown -R root:wheel mfsbsd-master
+cd mfsbsd-master
+make BASE=/workdir/DIST RELEASE=13.2-RELEASE ARCH=amd64 PKG_STATIC=/usr/local/sbin/pkg-static MFSROOT_MAXSIZE=120m
+#move the image to /tmp/image
+git clone https://github.com/fraenki/freebsd-foreman.git
+cd freebsd-foreman
+#Modify the build.sh script not to exit if image not fetched
+./build.sh -r 13.2
+scp /tmp/image/FreeBSD-x86_64-13.2-mfs.img X.X.X.X:/var/lib/tftpboot/boot/.
+```
