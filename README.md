@@ -59,7 +59,7 @@ cd freebsd-foreman
 scp /tmp/image/FreeBSD-x86_64-13.2-mfs.img X.X.X.X:/var/lib/tftpboot/boot/.
 ```
 
-Error: OS Version
+## Next Step: OS Version Error
 To fix, this you need to re-bootstrap pkg as follows:
 ```
 root@Inst1:/usr/home/neel # pkg-static bootstrap -f
